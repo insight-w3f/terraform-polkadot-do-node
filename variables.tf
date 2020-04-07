@@ -46,8 +46,49 @@ variable "region" {
 #####
 # instance
 #####
+variable "node_name" {
+  description = "Name of the node"
+  type        = string
+  default     = ""
+}
+
+variable "monitoring" {
+  description = "Boolean for cloudwatch"
+  type        = bool
+  default     = false
+}
+
 variable "create_eip" {
   description = "Boolean to create elastic IP"
   type        = bool
   default     = false
+}
+
+variable "root_volume_size" {
+  description = "Root volume size"
+  type        = string
+  default     = 0
+}
+
+variable "eph_volume_size" {
+  description = "Ephemeral volume size"
+  type        = string
+  default     = 0
+}
+
+variable "instance_type" {
+  description = "Instance type"
+  type        = string
+  default     = "g-2vcpu-8gb"
+}
+
+variable "public_key_path" {
+  description = "The path to the public ssh key"
+  type        = string
+  default     = ""
+}
+
+variable "security_group_id" {
+  description = "The id of the security group to run in"
+  type        = string
 }
