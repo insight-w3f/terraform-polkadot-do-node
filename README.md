@@ -1,7 +1,8 @@
-# terraform-polkadot-do-sentry-node
+# terraform-polkadot-do-node
 
-[![open-issues](https://img.shields.io/github/issues-raw/shinyfoil/terraform-polkadot-do-sentry-node?style=for-the-badge)](https://github.com/shinyfoil/terraform-polkadot-do-sentry-node/issues)
-[![open-pr](https://img.shields.io/github/issues-pr-raw/shinyfoil/terraform-polkadot-do-sentry-node?style=for-the-badge)](https://github.com/shinyfoil/terraform-polkadot-do-sentry-node/pulls)
+[![open-issues](https://img.shields.io/github/issues-raw/insight-w3f/terraform-polkadot-do-node?style=for-the-badge)](https://github.com/insight-w3f/terraform-polkadot-do-node/issues)
+[![open-pr](https://img.shields.io/github/issues-pr-raw/insight-w3f/terraform-polkadot-do-node?style=for-the-badge)](https://github.com/insight-w3f/terraform-polkadot-do-node/pulls)
+[![build-status](https://img.shields.io/circleci/build/gh/insight-w3f/terraform-polkadot-do-node?style=for-the-badge)](https://circleci.com/gh/insight-w3f/terraform-polkadot-do-node)
 
 ## Features
 
@@ -15,13 +16,13 @@ For Terraform v0.12.0+
 
 ```
 module "this" {
-    source = "github.com/shinyfoil/terraform-polkadot-do-sentry-node"
+    source = "github.com/insight-w3f/terraform-polkadot-do-node"
 
 }
 ```
 ## Examples
 
-- [defaults](https://github.com/shinyfoil/terraform-polkadot-do-sentry-node/tree/master/examples/defaults)
+- [defaults](https://github.com/insight-w3f/terraform-polkadot-do-node/tree/master/examples/defaults)
 
 ## Known  Issues
 No issue is creating limit on this module.
