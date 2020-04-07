@@ -33,12 +33,16 @@ No requirements.
 
 ## Providers
 
-No provider.
+| Name | Version |
+|------|---------|
+| digitalocean | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| create | Boolean to make module or not | `bool` | `true` | no |
+| create\_eip | Boolean to create elastic IP | `bool` | `false` | no |
 | environment | The environment | `string` | `""` | no |
 | namespace | The namespace to deploy into | `string` | `""` | no |
 | network\_name | The network name, ie kusama / mainnet | `string` | `""` | no |

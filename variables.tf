@@ -1,3 +1,8 @@
+variable "create" {
+  description = "Boolean to make module or not"
+  type        = bool
+  default     = true
+}
 
 ########
 # Label
@@ -36,4 +41,13 @@ variable "region" {
   description = "The DO region to deploy in"
   type        = string
   default     = "nyc1"
+}
+
+#####
+# instance
+#####
+variable "create_eip" {
+  description = "Boolean to create elastic IP"
+  type        = bool
+  default     = false
 }

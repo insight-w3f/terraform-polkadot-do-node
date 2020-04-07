@@ -11,3 +11,8 @@ module "label" {
   namespace   = var.namespace
   stage       = var.stage
 }
+
+resource "digitalocean_floating_ip" "this" {
+  count  = var.create_eip && var.create ? 1 : 0
+  region = var.region
+}
