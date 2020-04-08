@@ -49,3 +49,28 @@ resource "digitalocean_volume_attachment" "this" {
   droplet_id = digitalocean_droplet.this[0].id
   volume_id  = digitalocean_volume.eph.id
 }
+
+module "ansible" {
+  source = "github.com/insight-infrastructure/terraform-aws-ansible-playbook.git"
+
+  inventory_template = "${path.module}/ansible_inventory.tpl"
+
+  inventory_template_vars = {
+    node-ip   = digitalocean_floating_ip_assignment.this.ip_address
+    node-name = digitalocean_droplet.this[0].name
+
+    wireguard_validator_pubkey = var.wireguard_validator_pubkey
+    validator_vpn_peer_addr    = var.validator_vpn_peer_addr
+    validator_ip               = var.validator_ip
+  }
+
+  playbook_file_path = "${path.module}/ansible/main.yml"
+
+  playbook_vars = {
+    node_exporter_enabled = false
+  }
+
+  user             = "root"
+  private_key_path = var.private_key_path
+  become           = false
+}

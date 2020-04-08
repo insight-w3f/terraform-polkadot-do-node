@@ -52,11 +52,15 @@ No requirements.
 | network\_name | The network name, ie kusama / mainnet | `string` | `""` | no |
 | node\_name | Name of the node | `string` | `""` | no |
 | owner | Owner of the infrastructure | `string` | `""` | no |
+| private\_key\_path | The path to the private ssh key | `string` | `""` | no |
 | public\_key\_path | The path to the public ssh key | `string` | `""` | no |
 | region | The DO region to deploy in | `string` | `"nyc1"` | no |
 | root\_volume\_size | Root volume size | `string` | `0` | no |
 | security\_group\_id | The id of the security group to run in | `string` | n/a | yes |
 | stage | The stage of the deployment | `string` | `""` | no |
+| validator\_ip | Validator public IP | `string` | `"34.229.64.120"` | no |
+| validator\_vpn\_peer\_addr | Validator VPN peer address | `string` | `"172.16.0.1/24"` | no |
+| wireguard\_validator\_pubkey | Validator WG public key | `string` | `"jxvsfOegft5FNmd2HSxGQBz/dmCeluk/iWIYrLMuki0="` | no |
 
 ## Outputs
 
