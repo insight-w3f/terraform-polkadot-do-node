@@ -53,24 +53,31 @@ resource "digitalocean_volume_attachment" "this" {
 module "ansible" {
   source = "github.com/insight-infrastructure/terraform-aws-ansible-playbook.git"
 
-  inventory_template = "${path.module}/ansible_inventory.tpl"
-
-  inventory_template_vars = {
-    node-ip   = digitalocean_floating_ip_assignment.this.ip_address
-    node-name = digitalocean_droplet.this[0].name
-
-    wireguard_validator_pubkey = var.wireguard_validator_pubkey
-    validator_vpn_peer_addr    = var.validator_vpn_peer_addr
-    validator_ip               = var.validator_ip
-  }
-
-  playbook_file_path = "${path.module}/ansible/main.yml"
+  ip                     = digitalocean_floating_ip.this[0].ip_address
+  user                   = "root"
+  private_key_path       = var.private_key_path
+  playbook_file_path     = "${path.module}/ansible/main.yml"
+  requirements_file_path = "${path.module}/ansible/requirements.yml"
+  forks                  = 1
 
   playbook_vars = {
-    node_exporter_enabled = false
+    node_exporter_user            = var.node_exporter_user,
+    node_exporter_password        = var.node_exporter_password,
+    project                       = var.project,
+    polkadot_binary_url           = "https://github.com/w3f/polkadot/releases/download/v0.7.21/polkadot",
+    polkadot_binary_checksum      = "sha256:af561dc3447e8e6723413cbeed0e5b1f0f38cffaa408696a57541897bf97a34d",
+    node_exporter_binary_url      = "https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz",
+    node_exporter_binary_checksum = "sha256:b2503fd932f85f4e5baf161268854bf5d22001869b84f00fd2d1f57b51b72424",
+    polkadot_restart_enabled      = true,
+    polkadot_restart_minute       = "50",
+    polkadot_restart_hour         = "10",
+    polkadot_restart_day          = "1",
+    polkadot_restart_month        = "*",
+    polkadot_restart_weekday      = "*",
+    telemetry_url                 = var.telemetry_url,
+    logging_filter                = var.logging_filter,
+    relay_ip_address              = var.relay_node_ip,
+    relay_p2p_address             = var.relay_node_p2p_address
   }
-
-  user             = "root"
-  private_key_path = var.private_key_path
-  become           = false
+  module_depends_on = digitalocean_droplet.this
 }

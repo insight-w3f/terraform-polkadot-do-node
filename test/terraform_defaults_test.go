@@ -28,6 +28,7 @@ func TestTerraformDefaults(t *testing.T) {
 		TerraformDir: exampleFolder,
 		Vars: map[string]interface{}{
 			"public_key_path": publicKeyPath,
+			"private_key_path": privateKeyPath,
 		},
 	}
 
